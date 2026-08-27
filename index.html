@@ -8,7 +8,7 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Cute & Romantic Google Fonts -->
+  <!-- Romantic Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
@@ -18,7 +18,6 @@
     .font-cursive { font-family: 'Great Vibes', cursive; }
     .font-body { font-family: 'Poppins', sans-serif; }
     
-    /* Background subtle pattern overlay */
     body {
       background-color: #5F6F3A;
     }
@@ -61,8 +60,8 @@
     </svg>
   </button>
   
-  <!-- Audio File Reference -->
-  <audio id="bgAudio" loop preload="auto" src="assets/music/wedding-music.mp3"></audio>
+  <!-- Direct Audio Reference -->
+  <audio id="bgAudio" loop preload="auto" src="wedding-music.mp3"></audio>
 
   <!-- Main Card Container -->
   <main class="max-w-lg w-full bg-[#FFFDF7]/95 backdrop-blur-md shadow-2xl rounded-3xl border border-stone-200 p-6 sm:p-10 text-center my-6 space-y-8 z-10">
@@ -112,7 +111,6 @@
       </div>
       <p class="text-xs text-stone-600 leading-relaxed">Infant Jesus Syro-Malabar Church, Ulikkal</p>
       
-      <!-- Fixed Solid Olive Button -->
       <a href="https://maps.google.com/?q=Infant+Jesus+Syro-Malabar+Church+Ulikkal" target="_blank" class="inline-block mt-2 px-6 py-2.5 text-xs bg-[#5F6F3A] text-white rounded-full font-medium shadow hover:bg-[#3F4B25] transition-all duration-300">
         📍 Get Directions
       </a>
@@ -127,18 +125,17 @@
       </div>
       <p class="text-xs text-stone-600 leading-relaxed">1st Floor Banquet Hall-1, TRIDHA Hotel<br>Opp. Collectorate, Karimnagar</p>
       
-      <!-- Fixed Solid Olive Button -->
       <a href="https://maps.google.com/?q=TRIDHA+Hotel+Karimnagar" target="_blank" class="inline-block mt-2 px-6 py-2.5 text-xs bg-[#5F6F3A] text-white rounded-full font-medium shadow hover:bg-[#3F4B25] transition-all duration-300">
         📍 Get Directions
       </a>
     </section>
 
-    <!-- Photo Gallery Grid -->
+    <!-- Direct Photo Gallery Grid -->
     <section class="space-y-4 pt-4 border-t border-stone-200">
       <p class="text-[11px] uppercase tracking-widest text-stone-500 font-medium">Captured Moments</p>
       <div class="grid grid-cols-2 gap-3">
-        <img src="assets/images/couple-1.jpg" alt="Couple 1" class="rounded-xl object-cover h-36 w-full shadow-sm hover:scale-105 transition duration-300">
-        <img src="assets/images/couple-2.jpg" alt="Couple 2" class="rounded-xl object-cover h-36 w-full shadow-sm hover:scale-105 transition duration-300">
+        <img src="couple-1.jpg" alt="Couple 1" class="rounded-xl object-cover h-36 w-full shadow-sm hover:scale-105 transition duration-300">
+        <img src="couple-2.jpg" alt="Couple 2" class="rounded-xl object-cover h-36 w-full shadow-sm hover:scale-105 transition duration-300">
       </div>
     </section>
 
@@ -176,7 +173,6 @@
         setTimeout(() => loader.style.display = 'none', 700);
       }, 1500);
 
-      // Try Autoplay
       attemptAutoplay();
     });
 
@@ -184,7 +180,6 @@
       bgMusic.play().then(() => {
         musicBtn.classList.add('animate-spin');
       }).catch(() => {
-        // Handle Mobile Autoplay Policies: Start audio on user's first click anywhere
         const enableAudioOnTouch = () => {
           bgMusic.play();
           musicBtn.classList.add('animate-spin');
