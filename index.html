@@ -32,7 +32,7 @@
 
     @keyframes heartbeat {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+      50% { transform: scale(1.15); }
     }
     .heart-pulse { animation: heartbeat 1.4s infinite ease-in-out; }
   </style>
@@ -40,14 +40,18 @@
 <body class="font-body text-gray-700 min-h-screen flex flex-col items-center p-4 sm:p-6 relative">
 
   <!-- =========================================
-       ROMANTIC LOADING SCREEN
+       INTERACTIVE OPEN INVITATION SCREEN
   ========================================== -->
-  <div id="loading-screen" class="fixed inset-0 z-[100] bg-[#5F6F3A] flex flex-col items-center justify-center text-white text-center p-4 transition-opacity duration-700">
-    <div class="heart-pulse text-4xl mb-3 text-[#F7F3E8]">♡</div>
-    <p class="text-xs uppercase tracking-[0.3em] opacity-80 mb-2">A Little Celebration</p>
-    <h1 class="font-cursive text-5xl mb-4 text-[#F7F3E8]">Nobin & Sreya</h1>
-    <div class="w-12 h-[1px] bg-white/30 my-2"></div>
-    <p class="text-[10px] uppercase tracking-widest opacity-70">Loading Our Special Day...</p>
+  <div id="loading-screen" class="fixed inset-0 z-[100] bg-[#5F6F3A] flex flex-col items-center justify-center text-white text-center p-6 transition-opacity duration-700">
+    <div class="heart-pulse text-5xl mb-4 text-[#FFFDF7]">💌</div>
+    <p class="text-xs uppercase tracking-[0.3em] opacity-80 mb-2">You Are Cordially Invited</p>
+    <h1 class="font-cursive text-5xl mb-6 text-[#FFFDF7]">Nobin & Sreya</h1>
+    <div class="w-12 h-[1px] bg-white/30 mb-8"></div>
+    
+    <!-- Open Invitation Button (Triggers Music & Opens Card) -->
+    <button onclick="openInvitation()" class="px-8 py-3 bg.white/10 hover:bg-white/20 text-[#FFFDF7] border border-white/40 rounded-full text-xs uppercase tracking-widest font-medium transition duration-300 shadow-lg active:scale-95">
+      ✨ Open Invitation ✨
+    </button>
   </div>
 
   <!-- Floating Petal Canvas -->
@@ -162,33 +166,20 @@
   </main>
 
   <script>
-    // 1. Loading Screen & Audio Autoplay Setup
     const bgMusic = document.getElementById('bgAudio');
     const musicBtn = document.getElementById('musicToggleBtn');
 
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('loading-screen');
-      setTimeout(() => {
-        loader.style.opacity = '0';
-        setTimeout(() => loader.style.display = 'none', 700);
-      }, 1500);
-
-      attemptAutoplay();
-    });
-
-    function attemptAutoplay() {
+    // 1. Open Invitation & Start Music
+    function openInvitation() {
+      // Play Audio on User Action
       bgMusic.play().then(() => {
         musicBtn.classList.add('animate-spin');
-      }).catch(() => {
-        const enableAudioOnTouch = () => {
-          bgMusic.play();
-          musicBtn.classList.add('animate-spin');
-          document.removeEventListener('click', enableAudioOnTouch);
-          document.removeEventListener('touchstart', enableAudioOnTouch);
-        };
-        document.addEventListener('click', enableAudioOnTouch);
-        document.addEventListener('touchstart', enableAudioOnTouch);
-      });
+      }).catch(err => console.log("Audio playback error: ", err));
+
+      // Fade Out Screen
+      const loader = document.getElementById('loading-screen');
+      loader.style.opacity = '0';
+      setTimeout(() => loader.style.display = 'none', 700);
     }
 
     function toggleAudio() {
