@@ -163,13 +163,31 @@
     </section>
 
     <!-- Direct Photo Gallery Grid -->
-    <section class="space-y-4 pt-4 border-t border-stone-200">
-      <p class="text-[11px] uppercase tracking-widest text-stone-500 font-medium">Captured Moments</p>
-      <div class="grid grid-cols-2 gap-3">
-        <img src="couple-1.jpg" alt="Couple 1" class="rounded-xl object-cover h-36 w-full shadow-sm hover:scale-105 transition duration-300">
-        <img src="couple-2.jpg" alt="Couple 2" class="rounded-xl object-cover h-36 w-full shadow-sm hover:scale-105 transition duration-300">
-      </div>
-    </section>
+<section class="space-y-4 pt-4 border-t border-stone-200">
+  <p class="text-[11px] uppercase tracking-widest text-stone-500 font-medium">
+    Captured Moments
+  </p>
+
+  <div class="grid grid-cols-2 gap-3 items-start">
+
+    <div class="overflow-hidden rounded-xl shadow-sm">
+      <img
+        src="couple-1.jpg"
+        alt="Couple 1"
+        class="w-full h-auto block rounded-xl hover:scale-105 transition duration-300"
+      >
+    </div>
+
+    <div class="overflow-hidden rounded-xl shadow-sm">
+      <img
+        src="couple-2.jpg"
+        alt="Couple 2"
+        class="w-full h-auto block rounded-xl hover:scale-105 transition duration-300"
+      >
+    </div>
+
+  </div>
+</section>
 
     <!-- WhatsApp RSVP Buttons -->
     <section class="bg-[#F7F3E8] p-6 rounded-2xl border border-stone-200 space-y-4">
