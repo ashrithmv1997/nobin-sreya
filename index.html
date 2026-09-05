@@ -162,32 +162,172 @@
       </div>
     </section>
 
-    <!-- Direct Photo Gallery Grid -->
+```html
+<!-- Premium Floating Photo Gallery -->
 <section class="space-y-4 pt-4 border-t border-stone-200">
   <p class="text-[11px] uppercase tracking-widest text-stone-500 font-medium">
     Captured Moments
   </p>
 
-  <div class="grid grid-cols-2 gap-3 items-start">
+  <div class="premium-gallery">
 
-    <div class="overflow-hidden rounded-xl shadow-sm">
-      <img
-        src="couple-1.jpg"
-        alt="Couple 1"
-        class="w-full h-auto block rounded-xl hover:scale-105 transition duration-300"
-      >
+    <div class="premium-photo premium-photo-one">
+      <div class="premium-photo-inner">
+        <img
+          src="couple-1.jpg"
+          alt="Couple 1"
+          loading="lazy"
+        >
+      </div>
     </div>
 
-    <div class="overflow-hidden rounded-xl shadow-sm">
-      <img
-        src="couple-2.jpg"
-        alt="Couple 2"
-        class="w-full h-auto block rounded-xl hover:scale-105 transition duration-300"
-      >
+    <div class="premium-photo premium-photo-two">
+      <div class="premium-photo-inner">
+        <img
+          src="couple-2.jpg"
+          alt="Couple 2"
+          loading="lazy"
+        >
+      </div>
     </div>
 
   </div>
 </section>
+
+<style>
+  /* Premium floating gallery */
+  .premium-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: start;
+    perspective: 1000px;
+  }
+
+  .premium-photo {
+    position: relative;
+    width: 100%;
+    animation: premiumFloat 5s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .premium-photo-one {
+    transform: rotate(-1.5deg);
+    animation-delay: 0s;
+  }
+
+  .premium-photo-two {
+    transform: rotate(1.5deg);
+    animation-delay: -2.2s;
+  }
+
+  .premium-photo-inner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #fff;
+    padding: 5px;
+
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.10),
+      0 3px 8px rgba(0, 0, 0, 0.06);
+
+    transition:
+      transform 0.5s cubic-bezier(.2,.8,.2,1),
+      box-shadow 0.5s ease;
+  }
+
+  .premium-photo-inner img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    object-fit: contain;
+    transition:
+      transform 0.7s cubic-bezier(.2,.8,.2,1),
+      filter 0.5s ease;
+  }
+
+  /* Premium hover interaction */
+  .premium-photo:hover {
+    animation-play-state: paused;
+    z-index: 5;
+  }
+
+  .premium-photo:hover .premium-photo-inner {
+    transform: translateY(-8px) scale(1.025);
+    box-shadow:
+      0 24px 45px rgba(0, 0, 0, 0.16),
+      0 8px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .premium-photo:hover img {
+    transform: scale(1.035);
+  }
+
+  /* Soft floating movement */
+  @keyframes premiumFloat {
+    0% {
+      transform: translateY(0) rotate(-1.5deg);
+    }
+
+    50% {
+      transform: translateY(-7px) rotate(0deg);
+    }
+
+    100% {
+      transform: translateY(0) rotate(-1.5deg);
+    }
+  }
+
+  .premium-photo-two {
+    animation-name: premiumFloatTwo;
+  }
+
+  @keyframes premiumFloatTwo {
+    0% {
+      transform: translateY(0) rotate(1.5deg);
+    }
+
+    50% {
+      transform: translateY(-9px) rotate(3deg);
+    }
+
+    100% {
+      transform: translateY(0) rotate(1.5deg);
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .premium-gallery {
+      gap: 12px;
+    }
+
+    .premium-photo-inner {
+      border-radius: 15px;
+      padding: 4px;
+    }
+
+    .premium-photo-inner img {
+      border-radius: 12px;
+    }
+  }
+
+  /* Respect reduced-motion settings */
+  @media (prefers-reduced-motion: reduce) {
+    .premium-photo {
+      animation: none;
+    }
+
+    .premium-photo-inner,
+    .premium-photo-inner img {
+      transition: none;
+    }
+  }
+</style>
+```
+
 
     <!-- WhatsApp RSVP Buttons -->
     <section class="bg-[#F7F3E8] p-6 rounded-2xl border border-stone-200 space-y-4">
